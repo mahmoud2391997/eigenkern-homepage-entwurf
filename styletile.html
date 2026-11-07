@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EIGENKERN Style Tile</title>
+<link rel="stylesheet" href="ek.css">
+<style>
+.wrap{max-width:1440px;margin:0 auto;padding:64px 80px 72px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:28px;border-bottom:1.5px solid var(--ink);margin-bottom:0}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);border-left:1px solid var(--rule)}
+.blk{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:28px}
+.blk>.label{display:block;margin-bottom:22px}
+.s4{grid-column:span 4}.s5{grid-column:span 5}.s7{grid-column:span 7}.s8{grid-column:span 8}.s3{grid-column:span 3}.s6{grid-column:span 6}.s12{grid-column:span 12}
+.type-row{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:14px 0;border-top:1px solid var(--rule-2);align-items:baseline}
+.type-row:first-of-type{border-top:0}
+.type-row .meta{font:400 12px/1.5 var(--f-mono);color:var(--steel)}
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.sw{border:1px solid var(--rule)}
+.sw .c{height:92px;display:flex;align-items:flex-end;padding:10px;font:500 12px/1 var(--f-mono)}
+.sw .i{padding:10px 12px;background:#fff;font-size:13.5px;line-height:1.45}
+.sw .i b{display:block;font-weight:600;font-size:14px}
+.sw .i span{font:400 12px/1.4 var(--f-mono);color:var(--steel)}
+.ratio{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.ratio div{font:500 12px/1 var(--f-mono);padding:8px 10px;border:1px solid var(--rule)}
+.btn-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.state{font:400 11.5px/1 var(--f-mono);color:var(--steel);margin-top:8px;text-align:center}
+.icons{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:1px solid var(--rule-2);border-left:1px solid var(--rule-2)}
+.icons div{border-right:1px solid var(--rule-2);border-bottom:1px solid var(--rule-2);height:84px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font:400 11px/1 var(--f-mono);color:var(--steel)}
+.princ{list-style:none;counter-reset:p}
+.princ li{display:grid;grid-template-columns:36px 1fr;padding:12px 0;border-top:1px solid var(--rule-2);font-size:15px;color:var(--ink-2)}
+.princ li b{color:var(--ink);font-weight:600;display:block}
+.princ li::before{counter-increment:p;content:"0" counter(p);font:500 12px/1.9 var(--f-mono);color:var(--petrol)}
+.field{display:block;margin-top:6px;height:48px;border:1.5px solid var(--ink);background:#fff;padding:0 14px;font:400 16px/45px var(--f-sans);color:var(--steel)}
+.field.focus{outline:3px solid var(--signal);outline-offset:0;color:var(--ink)}
+.solmini{display:grid;grid-template-columns:44px 1fr 20px;gap:6px;padding:20px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.solmini p{font-size:14.5px;color:var(--ink-2);margin:6px 0 10px}
+</style>
+</head>
+<body><div class="wrap">
+  <div class="head">
+    <div>
+      <div class="label" style="margin-bottom:12px">Style Tile · Entwurf 1</div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <svg width="48" height="48" viewBox="0 0 30 30"><rect x="1" y="1" width="28" height="28" fill="none" stroke="#0E1B20" stroke-width="2"/><rect x="11" y="11" width="10" height="10" fill="#0B4F4A"/></svg>
+        <span style="font:600 34px/1 var(--f-sans);letter-spacing:.16em">EIGENKERN</span>
+      </div>
+    </div>
+    <div style="text-align:right;max-width:520px">
+      <div class="h3" style="font:600 26px/1.2 var(--f-serif)">Grundriss &amp; Typenschild</div>
+      <p class="small" style="margin-top:8px">Technische Zeichnung statt KI-Glanz: Haarlinien, Paragraphen-Nummern, ein ruhiges Petrol und genau ein Signal, Markergelb, das nur für den Wächter steht.</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- Typografie -->
+    <div class="blk s7">
+      <span class="label">Typografie · alle OFL, selbst gehostet (WOFF2)</span>
+      <div class="type-row"><div class="meta">Source Serif 4<br>Semibold 600<br>76 / 52 / 40</div><div style="font:600 52px/1.05 var(--f-serif);letter-spacing:-.015em">Ihre eigene KI.</div></div>
+      <div class="type-row"><div class="meta">IBM Plex Sans<br>Semibold 600 · 22</div><div class="h3">Antworten aus Ihren Unterlagen</div></div>
+      <div class="type-row"><div class="meta">IBM Plex Sans<br>Regular 400 · 17/27</div><div style="color:var(--ink-2)">Ihre Daten bleiben unter Ihrer Kontrolle: auf dem Gerät im Haus oder auf einem Server nur für Sie in Deutschland.</div></div>
+      <div class="type-row"><div class="meta">IBM Plex Mono<br>Medium 500 · 12.5 caps</div><div class="label" style="color:var(--ink)">§ 03 · Drei Wege · Gerät im Büro · 0,00 €</div></div>
+      <p class="small" style="margin-top:14px;font-size:13.5px">Ziffern tabellarisch (tnum) in Kosten &amp; Tabellen. Keine Versal-Headlines, keine Condensed-Schnitte.</p>
+    </div>
+
+    <!-- Prinzipien -->
+    <div class="blk s5">
+      <span class="label">Gestaltungsregeln</span>
+      <ul class="princ">
+        <li><div><b>Haarlinien statt Schatten.</b>1 px Linien gliedern, Karten haben keine Schlagschatten und max. 2 px Radius.</div></li>
+        <li><div><b>Paragraphen statt Pills.</b>Sektionen sind nummeriert (§ 01–07) wie eine Norm oder ein Gesetzestext.</div></li>
+        <li><div><b>Zeichnung statt Stockfoto.</b>Grundrisse und Schemata erklären, wo die Daten liegen.</div></li>
+        <li><div><b>Ein Signal.</b>Markergelb nur für Platzhalter, Datengrenze und Fokus. Nie als Fläche für Werbung.</div></li>
+        <li><div><b>Sprache bleibt sachlich.</b>Keine Emojis, keine Glow-Effekte, keine Verläufe.</div></li>
+      </ul>
+    </div>
+
+    <!-- Farben -->
+    <div class="blk s8">
+      <span class="label">Farbpalette · WCAG-Kontrast auf Papier #F3F5F4</span>
+      <div class="swatches">
+        <div class="sw"><div class="c" style="background:#0E1B20;color:#fff">16.0 : 1</div><div class="i"><b>Tinte</b><span>#0E1B20</span><br>Text, Footer, Wächter</div></div>
+        <div class="sw"><div class="c" style="background:#0B4F4A;color:#fff">8.6 : 1</div><div class="i"><b>Petrol</b><span>#0B4F4A</span><br>Primär, Links, Buttons</div></div>
+        <div class="sw"><div class="c" style="background:#D6F03C;color:#0E1B20">13.7 : 1 auf Tinte</div><div class="i"><b>Markergelb</b><span>#D6F03C</span><br>Nur Wächter / Fokus</div></div>
+        <div class="sw"><div class="c" style="background:#F3F5F4;color:#0E1B20;border-bottom:1px solid var(--rule)">Grund</div><div class="i"><b>Papier</b><span>#F3F5F4</span><br>Seitenfläche</div></div>
+        <div class="sw"><div class="c" style="background:#3A4950;color:#fff">8.5 : 1</div><div class="i"><b>Tinte 2</b><span>#3A4950</span><br>Fließtext</div></div>
+        <div class="sw"><div class="c" style="background:#56656C;color:#fff">5.5 : 1</div><div class="i"><b>Stahl</b><span>#56656C</span><br>Labels, Meta</div></div>
+        <div class="sw"><div class="c" style="background:#E2ECEA;color:#0B4F4A">Petrol 7.8 : 1</div><div class="i"><b>Petrol 50</b><span>#E2ECEA</span><br>Hinweisflächen</div></div>
+        <div class="sw"><div class="c" style="background:#C9D1D2;color:#0E1B20">Linie</div><div class="i"><b>Haarlinie</b><span>#C9D1D2</span><br>Raster, Trenner</div></div>
+      </div>
+    </div>
+
+    <!-- Icons -->
+    <div class="blk s4">
+      <span class="label">Icons · 28 px, 1,5 px Strich, eckig</span>
+      <div class="icons">
+        <div><svg class="ic" viewBox="0 0 28 28"><path d="M6 3h11l5 5v17H6z"/><path d="M17 3v5h5"/><path d="M10 14h8M10 18h8M10 22h5"/></svg>Akte</div>
+        <div><svg class="ic" viewBox="0 0 28 28"><rect x="3" y="3" width="22" height="22"/><path d="M14 8v12M8 14h12"/></svg>Praxis</div>
+        <div><svg class="ic" viewBox="0 0 28 28"><path d="M3 25h22"/><path d="M5 25V12l9-7 9 7v13"/><path d="M11 25v-7h6v7"/></svg>Haus</div>
+        <div><svg class="ic" viewBox="0 0 28 28"><path d="M14 25V3M14 12l8 5M14 12l-8 5M9 25h10"/></svg>Energie</div>
+        <div><svg class="ic" viewBox="0 0 28 28"><path d="M14 3l9 3v8c0 6-4 10-9 11-5-1-9-5-9-11V6z"/><path d="M9 14h10"/></svg>Wächter</div>
+        <div><svg class="ic" viewBox="0 0 28 28"><rect x="5" y="3" width="18" height="22"/><path d="M5 10h18M5 17h18"/><path d="M18 6.5h2M18 13.5h2M18 20.5h2"/></svg>Server</div>
+        <div><svg class="ic" viewBox="0 0 28 28"><rect x="3" y="5" width="22" height="16"/><path d="M12 10v6l5-3z"/><path d="M8 25h12"/></svg>Video</div>
+        <div><svg class="ic" viewBox="0 0 28 28"><rect x="5" y="12" width="18" height="13"/><path d="M9 12V8a5 5 0 0 1 10 0v4"/></svg>Schutz</div>
+        <div><svg class="ic" viewBox="0 0 28 28"><circle cx="12" cy="12" r="8"/><path d="M18 18l7 7"/></svg>Suche</div>
+        <div><svg class="ic" viewBox="0 0 28 28"><path d="M3 14h22M18 7l7 7-7 7"/></svg>Weiter</div>
+        <div><svg class="ic" viewBox="0 0 28 28"><rect x="3" y="3" width="9" height="9"/><rect x="16" y="3" width="9" height="9"/><rect x="3" y="16" width="9" height="9"/><path d="M20.5 16v9M16 20.5h9"/></svg>Branche</div>
+        <div><svg class="ic" viewBox="0 0 28 28"><path d="M4 4h20v14H12l-6 6v-6H4z"/><path d="M9 10h10"/></svg>Frage</div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="blk s5">
+      <span class="label">Buttons · 52 / 40 px, Radius 2 px</span>
+      <div class="btn-row">
+        <div><a class="btn btn-primary">Mit eigenen Daten testen <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 9h13M10 4l5 5-5 5"/></svg></a><div class="state">Primär</div></div>
+        <div><a class="btn btn-primary" style="background:#083d39;outline:3px solid var(--signal);outline-offset:2px">Testen</a><div class="state">Hover + Fokus</div></div>
+      </div>
+      <div class="btn-row">
+        <div><a class="btn btn-secondary">So funktioniert es</a><div class="state">Sekundär</div></div>
+        <div><a class="btn btn-secondary" style="background:var(--ink);color:#fff">Gespräch</a><div class="state">Hover</div></div>
+        <div style="padding:0 6px"><a class="btn btn-ghost">Partner</a><div class="state">Textlink</div></div>
+      </div>
+      <div class="btn-row" style="background:var(--ink);padding:16px;margin:0">
+        <a class="btn btn-on-dark">Mit eigenen Daten testen</a>
+        <a class="btn btn-secondary btn-outline-dark">Gespräch</a>
+      </div>
+    </div>
+
+    <!-- Karten -->
+    <div class="blk s7">
+      <span class="label">Karten &amp; Elemente</span>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div>
+          <div class="solmini">
+            <svg class="ic" viewBox="0 0 28 28"><path d="M6 3h11l5 5v17H6z"/><path d="M17 3v5h5"/><path d="M10 14h8M10 18h8M10 22h5"/></svg>
+            <div><span class="label">Für Steuerkanzleien</span><div class="h3" style="font-size:19px;margin-top:4px">Steuerberater-KI</div><p>Mandantenfragen aus der Akte beantworten, Fristen im Blick.</p><span style="color:var(--petrol);font-weight:500;font-size:14.5px">Mehr für Kanzleien</span></div>
+            <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="#0E1B20" stroke-width="1.5"><path d="M4 16L16 4M7 4h9v9"/></svg>
+          </div>
+          <div style="margin-top:20px"><span class="label">Eingabefeld · Fokus</span>
+            <span class="field">Name Ihrer Kanzlei</span>
+            <span class="field focus" style="margin-top:10px">Kanzlei Muster|</span>
+          </div>
+        </div>
+        <div>
+          <div style="background:#fff;border:1px solid var(--rule)">
+            <div style="display:flex;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--rule)"><span class="label">Weg C</span><span class="tag">Zusätzlich buchbar</span></div>
+            <div style="padding:18px"><div style="font:600 24px/1.2 var(--f-serif);margin-bottom:10px">Hybrid</div><p class="small">Ein Wächter legt eine Schattenkopie an: Namen werden durch Platzhalter ersetzt.</p></div>
+          </div>
+          <div style="margin-top:20px">
+            <span class="label">Platzhalter-Token &amp; echte Angabe</span>
+            <p style="margin-top:10px;font-size:16px">Mandantin <span class="tok">PERSON_01</span> → <span class="real">Andrea Becker</span></p>
+          </div>
+          <div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);background:#fff">
+            <div style="padding:12px 16px;border-right:1px solid var(--rule)"><span class="label">Pro Frage</span><div style="font:600 28px/1.1 var(--f-serif);color:var(--petrol);margin-top:6px">0,00 €</div></div>
+            <div style="padding:12px 16px"><span class="label">Typenschild</span><div style="font-weight:500;margin-top:8px">Gerät im Büro</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></body>
+</html>

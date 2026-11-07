@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wächter Flow</title>
+<link rel="stylesheet" href="ek.css">
+<style>
+body{background:var(--paper)}
+.wrap{max-width:1440px;margin:0 auto;padding:72px 80px 80px}
+.top{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:end;margin-bottom:56px}
+.top p{color:var(--ink-2);font-size:17px;max-width:640px}
+.board{display:grid;grid-template-columns:1fr 64px 1.15fr 88px 1fr;grid-template-rows:auto auto auto auto;position:relative}
+.zone-in{grid-column:1/4;grid-row:1/5;background:var(--white);border:1px solid var(--rule)}
+.zone-out{grid-column:5/6;grid-row:1/5;background:var(--ink)}
+.bnd{grid-column:4/5;grid-row:1/5;position:relative}
+.bnd::before{content:"";position:absolute;top:0;bottom:0;left:50%;border-left:2px dashed var(--petrol)}
+.bnd span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap;background:var(--paper);padding:6px 12px;font:500 12px/1 var(--f-mono);letter-spacing:.1em;color:var(--petrol)}
+.zh{padding:20px 28px 0;font:500 12px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase}
+.zh.in{grid-column:1/4;grid-row:1;color:var(--petrol)}
+.zh.out{grid-column:5;grid-row:1;color:var(--signal)}
+.cell{position:relative;z-index:1;padding:24px 28px}
+.r2{grid-row:2}.r3{grid-row:3}.r4{grid-row:4}
+.c1{grid-column:1}.c2{grid-column:2}.c3{grid-column:3}.c5{grid-column:5}
+.doc{border:1px solid var(--rule);background:var(--white)}
+.doc-h{display:flex;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--rule);font:500 11.5px/1.2 var(--f-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--steel)}
+.doc-b{padding:16px;font-size:15px;line-height:1.8}
+.doc.sh{background:#E9EEEE}
+.doc.cl{background:#1A2A30;border:1px dashed #6b7b82;color:#fff}
+.doc.cl .doc-h{border-color:#33444b;color:var(--ink-mute)}
+.doc.fin{outline:2px solid var(--petrol);outline-offset:-1px}
+.step-t{display:flex;gap:12px;align-items:baseline;margin-bottom:12px}
+.step-t .n{font:500 12px/1 var(--f-mono);color:var(--petrol)}
+.zone-out .step-t .n,.c5 .n{color:var(--signal)}
+.step-t b{font-weight:600;font-size:16px}
+.c5 .step-t b{color:#fff}
+.ar{display:flex;align-items:center;justify-content:center;z-index:2;position:relative}
+.ar svg{width:44px;height:18px;fill:none;stroke:var(--petrol);stroke-width:1.6}
+.ar.long{grid-column:4}
+.ar.long svg{width:76px}
+
+.key{border:1.5px solid var(--ink);background:var(--white)}
+.key .kh{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--ink);color:#fff;font:500 11.5px/1.2 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.key table{width:100%;border-collapse:collapse;font:400 13.5px/1.4 var(--f-mono)}
+.key td{padding:7px 14px;border-top:1px solid var(--rule)}
+.key td+td{border-left:1px solid var(--rule)}
+.lock{display:inline-flex;align-items:center;gap:6px;color:var(--signal)}
+.lock svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.5}
+.cap{font-size:13.5px;color:var(--steel);margin-top:10px}
+.c5 .cap{color:var(--ink-mute)}
+.legend{display:flex;gap:40px;margin-top:32px;padding-top:24px;border-top:1px solid var(--rule);font-size:14.5px;color:var(--ink-2);align-items:center}
+.legend>span{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.sw{width:28px;height:0;border-top:2px dashed var(--petrol)}
+.vert{display:flex;justify-content:center}
+.vert svg{width:18px;height:40px;fill:none;stroke:var(--petrol);stroke-width:1.6}
+</style>
+</head>
+<body><div class="wrap">
+  <div class="top">
+    <div>
+      <div class="label" style="margin-bottom:16px"><b style="color:var(--petrol);font-weight:500">§ 04</b> &nbsp;Der Wächter · Visualisierung</div>
+      <h1 class="h1">Ein Schatten geht hinaus.<br>Die Namen bleiben zu Hause.</h1>
+    </div>
+    <p>Der Wächter ersetzt Namen und vertrauliche Angaben durch Platzhalter. Nur diese Schattenkopie überschreitet Ihre Datengrenze. Die Zuordnungstabelle verlässt das Gerät nie; mit ihr setzt der Wächter die Antwort der Cloud-KI bei Ihnen wieder zusammen.</p>
+  </div>
+
+  <div class="board">
+    <div class="zone-in"></div><div class="bnd"><span>Ihre Datengrenze</span></div><div class="zone-out"></div>
+    <div class="zh in">Bei Ihnen · Gerät im Haus</div>
+    <div class="zh out">Draußen · Cloud-KI</div>
+
+    <!-- Zeile hin -->
+    <div class="cell r2 c1">
+      <div class="step-t"><span class="n">01</span><b>Original bleibt bei Ihnen.</b></div>
+      <div class="doc"><div class="doc-h"><span>Original</span><span>Bescheid 2025</span></div>
+        <div class="doc-b">Mandantin <span class="real">Andrea Becker</span>, <span class="real">Hauptstraße 4, Cloppenburg</span>, Steuer-ID <span class="real">12 345 678 901</span>. Nachzahlung <span class="real">1.284 €</span>. Einspruch prüfen.</div></div>
+    </div>
+    <div class="ar r2 c2"><svg viewBox="0 0 44 18"><path d="M2 9h38M34 3l6 6-6 6"/></svg></div>
+    <div class="cell r2 c3">
+      <div class="step-t"><span class="n">02</span><b>Wächter legt den Schatten an.</b></div>
+      <div class="doc sh"><div class="doc-h"><span>Schattenkopie</span><span>Wächter</span></div>
+        <div class="doc-b">Mandantin <span class="tok">PERSON_01</span>, <span class="tok">ADRESSE_01</span>, Steuer-ID <span class="tok">ID_01</span>. Nachzahlung <span class="tok">BETRAG_01</span>. Einspruch prüfen.</div></div>
+    </div>
+    <div class="ar r2 long"><svg viewBox="0 0 76 18"><path d="M2 9h70M66 3l6 6-6 6"/></svg></div>
+    <div class="cell r2 c5">
+      <div class="step-t"><span class="n">03</span><b>Cloud-KI arbeitet am Schatten.</b></div>
+      <div class="doc cl"><div class="doc-h"><span>Eingang</span><span>ChatGPT · Claude · …</span></div>
+        <div class="doc-b">Mandantin <span class="tok">PERSON_01</span>, <span class="tok">ADRESSE_01</span> … Einspruch prüfen.</div></div>
+      <p class="cap">Sieht nur Platzhalter. Kein Name, keine Adresse, keine Steuer-ID.</p>
+    </div>
+
+    <!-- Mitte: Zuordnungstabelle -->
+    <div class="cell r3 c3" style="padding-top:0;padding-bottom:0">
+      <div class="vert"><svg viewBox="0 0 18 40"><path d="M9 0v34M3 28l6 6 6-6"/></svg></div>
+      <div class="key">
+        <div class="kh"><span>Zuordnungstabelle</span><span class="lock"><svg viewBox="0 0 12 12"><rect x="1.5" y="5.5" width="9" height="6"/><path d="M3.5 5.5V4a2.5 2.5 0 0 1 5 0v1.5"/></svg>verlässt das Gerät nie</span></div>
+        <table>
+          <tr><td>PERSON_01</td><td>Andrea Becker</td></tr>
+          <tr><td>ADRESSE_01</td><td>Hauptstraße 4, Cloppenburg</td></tr>
+          <tr><td>ID_01</td><td>12 345 678 901</td></tr>
+          <tr><td>BETRAG_01</td><td>1.284 €</td></tr>
+        </table>
+      </div>
+      <div class="vert"><svg viewBox="0 0 18 40"><path d="M9 0v34M3 28l6 6 6-6"/></svg></div>
+    </div>
+    <div class="cell r3 c5" style="display:flex;align-items:center;justify-content:center;padding:0">
+      <div class="vert"><svg viewBox="0 0 18 120" style="height:120px;stroke:var(--signal)"><path d="M9 0v114M3 108l6 6 6-6"/></svg></div>
+    </div>
+
+    <!-- Zeile zurück -->
+    <div class="cell r4 c1">
+      <div class="step-t"><span class="n">05</span><b>Antwort mit echten Angaben.</b></div>
+      <div class="doc fin"><div class="doc-h"><span>Antwort</span><span>nur bei Ihnen</span></div>
+        <div class="doc-b">Für <span class="real">Andrea Becker</span> ist ein Einspruch innerhalb eines Monats möglich. Entwurf an <span class="real">Hauptstraße 4, Cloppenburg</span>, Bezug: Nachzahlung <span class="real">1.284 €</span>.</div></div>
+    </div>
+    <div class="ar r4 c2"><svg viewBox="0 0 44 18"><path d="M42 9H4M10 3L4 9l6 6"/></svg></div>
+    <div class="cell r4 c3">
+      <div class="step-t"><span class="n">04</span><b>Wächter setzt zusammen.</b></div>
+      <div class="doc sh"><div class="doc-h"><span>Rückweg</span><span>Platzhalter → Angaben</span></div>
+        <div class="doc-b"><span class="tok">PERSON_01</span> → <span class="real">Andrea Becker</span><br><span class="tok">ADRESSE_01</span> → <span class="real">Hauptstraße 4, …</span><br><span class="tok">BETRAG_01</span> → <span class="real">1.284 €</span></div></div>
+    </div>
+    <div class="ar r4 long in"><svg viewBox="0 0 76 18"><path d="M74 9H4M10 3L4 9l6 6"/></svg></div>
+    <div class="cell r4 c5">
+      <div class="step-t"><span class="n">03</span><b>Antwort mit Platzhaltern.</b></div>
+      <div class="doc cl"><div class="doc-h"><span>Ausgang</span><span>Antwort</span></div>
+        <div class="doc-b">Für <span class="tok">PERSON_01</span> ist ein Einspruch innerhalb eines Monats möglich. Entwurf an <span class="tok">ADRESSE_01</span>, Bezug <span class="tok">BETRAG_01</span>.</div></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><span class="tok">PERSON_01</span> Platzhalter, verlässt das Haus</span>
+    <span><span class="real">Andrea Becker</span> echte Angabe, bleibt im Haus</span>
+    <span><span class="sw"></span> Ihre Datengrenze</span>
+    <span style="margin-left:auto" class="label">Beispiel mit erfundenen Daten</span>
+  </div>
+</div></body>
+</html>

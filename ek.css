@@ -1,0 +1,91 @@
+/* EIGENKERN — Design-Tokens & Komponenten
+   Konzept: "Grundriss & Typenschild" — technische Zeichnung, Norm-Paragraphen,
+   Haarlinien statt Schatten, ein einziges Signal (Markergelb) für den Wächter.
+   Fonts (OFL, selbst gehostet in Produktion): Source Serif 4, IBM Plex Sans, IBM Plex Mono.
+   Für die Mockup-Vorschau werden sie hier per Google Fonts geladen. */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap');
+
+:root{
+  --paper:#F3F5F4;      /* Grundfläche, kühles Papierweiß */
+  --white:#FFFFFF;
+  --ink:#0E1B20;        /* Tinte: Text, dunkle Flächen */
+  --ink-2:#3A4950;      /* Fließtext sekundär  8.5:1 */
+  --steel:#56656C;      /* Meta, Labels       5.5:1 */
+  --rule:#C9D1D2;       /* Haarlinien */
+  --rule-2:#E1E6E6;
+  --petrol:#0B4F4A;     /* Primär: Tannen-Petrol 8.6:1 */
+  --petrol-600:#13706A;
+  --petrol-50:#E2ECEA;
+  --signal:#D6F03C;     /* Markergelb – nur für Platzhalter/Wächter & Fokus */
+  --ink-mute:#9FB0B5;   /* Text auf Tinte 7.8:1 */
+
+  --f-serif:'Source Serif 4', Georgia, serif;
+  --f-sans:'IBM Plex Sans', system-ui, sans-serif;
+  --f-mono:'IBM Plex Mono', ui-monospace, monospace;
+
+  --container:1240px;
+  --gutter:32px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--f-sans)}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+
+/* Typografie */
+.h-display{font:600 76px/1.02 var(--f-serif);letter-spacing:-.02em}
+.h1{font:600 52px/1.08 var(--f-serif);letter-spacing:-.015em}
+.h2{font:600 40px/1.12 var(--f-serif);letter-spacing:-.01em}
+.h3{font:600 22px/1.3 var(--f-sans);letter-spacing:-.005em}
+.lead{font-size:20px;line-height:1.55;color:var(--ink-2)}
+.small{font-size:15px;color:var(--ink-2)}
+.label{font:500 12.5px/1.3 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--steel)}
+.mono{font-family:var(--f-mono)}
+
+/* Paragraphen-Kopf jeder Sektion */
+.sec{padding:112px 0;border-top:1px solid var(--rule)}
+.sec-head{display:grid;grid-template-columns:3fr 9fr;gap:var(--gutter);margin-bottom:56px}
+.sec-no{font:500 13px/1 var(--f-mono);color:var(--steel);letter-spacing:.06em;padding-top:12px;display:flex;gap:12px;align-items:flex-start}
+.sec-no b{font-weight:500;color:var(--petrol)}
+.sec-head .h2{max-width:780px}
+.sec-head .lead{max-width:720px;margin-top:20px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:12px;height:52px;padding:0 24px;font:500 16px/1 var(--f-sans);border:1.5px solid transparent;border-radius:2px;cursor:pointer;white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--petrol);color:#fff}
+.btn-primary:hover{background:#083d39}
+.btn-secondary{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-secondary:hover{background:var(--ink);color:#fff}
+.btn-ghost{padding:0;height:auto;color:var(--petrol);border-bottom:1.5px solid currentColor;border-radius:0;padding-bottom:4px}
+.btn-sm{height:40px;padding:0 16px;font-size:15px}
+.btn-on-dark{background:var(--signal);color:var(--ink)}
+.btn-outline-dark{border-color:#fff;color:#fff}
+
+/* Platzhalter-Token (Wächter) */
+.tok{display:inline-block;font:500 .82em/1.5 var(--f-mono);background:var(--signal);color:var(--ink);padding:0 6px;border-radius:1px;white-space:nowrap}
+.real{background:linear-gradient(transparent 62%,rgba(214,240,60,.75) 62%);padding:0 2px}
+
+/* Karten */
+.card{background:var(--white);border:1px solid var(--rule);padding:32px}
+.card-k{border-top:3px solid var(--petrol)}
+
+/* Icons: 24px, 1.5 Strich, eckige Enden */
+.ic{width:28px;height:28px;stroke:var(--petrol);stroke-width:1.5;fill:none;stroke-linecap:square;stroke-linejoin:miter}
+
+/* Header */
+.util{background:var(--ink);color:var(--ink-mute);font:400 13px/1 var(--f-mono)}
+.util .container{display:flex;justify-content:space-between;height:36px;align-items:center}
+.util a{color:#fff}
+.nav{background:var(--paper);border-bottom:1px solid var(--rule)}
+.nav .container{display:flex;align-items:center;height:80px;gap:48px}
+.logo{display:flex;align-items:center;gap:12px;font:600 19px/1 var(--f-sans);letter-spacing:.16em}
+.logo-mark{width:30px;height:30px}
+.nav-links{display:flex;gap:36px;font-weight:500;font-size:16px;margin-right:auto}
+.nav-links span{display:flex;align-items:center;gap:6px}
+.nav-links svg{width:12px;height:12px;stroke:var(--ink);stroke-width:1.8;fill:none}
+.nav-cta{display:flex;gap:12px}
+.burger{display:none}
+.tag{font:500 11.5px/1 var(--f-mono);letter-spacing:.05em;text-transform:uppercase;padding:6px 8px;border:1px solid var(--petrol);color:var(--petrol)}

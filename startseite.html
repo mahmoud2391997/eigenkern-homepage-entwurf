@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EIGENKERN Startseite</title>
+<link rel="stylesheet" href="ek.css">
+<style>
+/* ---------- HERO ---------- */
+.hero{padding:72px 0 0}
+.hero-grid{display:grid;grid-template-columns:6fr 6fr;gap:64px;align-items:start}
+.hero .kicker{display:flex;gap:12px;align-items:center;margin-bottom:28px}
+.hero .kicker i{display:block;width:32px;height:1px;background:var(--steel)}
+.hero h1{margin-bottom:28px}
+.hero .lead{max-width:560px}
+.hero .lead strong{color:var(--ink);font-weight:500}
+.checks{list-style:none;margin:36px 0 40px;border-top:1px solid var(--rule)}
+.checks li{display:grid;grid-template-columns:44px 1fr;padding:16px 0;border-bottom:1px solid var(--rule);font-size:16.5px;color:var(--ink-2)}
+.checks li span{font:500 13px/1.9 var(--f-mono);color:var(--petrol)}
+.checks strong{color:var(--ink);font-weight:600}
+.hero-ctas{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.hero-ctas .btn-ghost{margin-left:12px}
+
+.plan{background:var(--white);border:1px solid var(--rule)}
+.plan-top{display:flex;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--rule)}
+.plan svg{width:100%;height:auto}
+.plate{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule)}
+.plate div{padding:14px 20px;border-right:1px solid var(--rule)}
+.plate div:last-child{border-right:0}
+.plate b{display:block;font:500 15px/1.4 var(--f-sans);color:var(--ink);margin-top:6px}
+
+.branches{margin-top:72px;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);display:flex}
+.branches .label{padding:22px 24px 22px 0;margin:0;color:var(--ink);white-space:nowrap}
+.branches a{flex:1;padding:22px 0;text-align:center;font-weight:500;font-size:15.5px;border-left:1px solid var(--rule)}
+.branches a:last-child{color:var(--petrol)}
+
+.facts{display:grid;grid-template-columns:repeat(4,1fr);margin-top:0}
+.facts>div{padding:36px 28px 40px 0}
+.facts>div+div{padding-left:28px;border-left:1px solid var(--rule)}
+.facts .num{font:600 44px/1 var(--f-serif);color:var(--petrol);margin-bottom:10px}
+.facts .num small{font-size:22px}
+
+/* ---------- LÖSUNGEN ---------- */
+.sol{display:grid;grid-template-columns:3fr 9fr;gap:var(--gutter)}
+.sol-list{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;border-bottom:1px solid var(--rule)}
+.sol-item{display:grid;grid-template-columns:56px 1fr 24px;gap:8px;padding:32px 0 36px;border-top:1px solid var(--rule)}
+.sol-item .h3{margin:6px 0 10px}
+.sol-item p{font-size:16px;color:var(--ink-2);margin-bottom:16px}
+.sol-item .more{font-weight:500;font-size:15px;color:var(--petrol)}
+.sol-item .arr{width:20px;height:20px;stroke:var(--ink);stroke-width:1.5;fill:none;margin-top:6px}
+.sol-aside p{font-size:16px;color:var(--ink-2);margin-top:12px}
+.sol-aside .note{margin-top:32px;padding:20px;border:1px solid var(--rule);background:var(--white)}
+
+/* ---------- PROZESS ---------- */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--ink);position:relative}
+.step{padding:28px 24px 0 0;position:relative}
+.step::before{content:"";position:absolute;top:-6px;left:0;width:11px;height:11px;background:var(--paper);border:1.5px solid var(--petrol)}
+.step:first-child::before{background:var(--petrol)}
+.step .no{font:500 13px/1 var(--f-mono);color:var(--petrol);margin-bottom:18px}
+.step h4{font:600 18px/1.3 var(--f-sans);margin-bottom:10px}
+.step p{font-size:15px;line-height:1.55;color:var(--ink-2)}
+.step-foot{margin-top:48px;display:flex;justify-content:space-between;align-items:center;padding:20px 24px;background:var(--petrol-50);font-size:15.5px}
+
+/* ---------- DREI WEGE ---------- */
+.ways{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);background:var(--white)}
+.way{padding:0;border-right:1px solid var(--rule);display:flex;flex-direction:column}
+.way:last-child{border-right:0}
+.way-fig{height:200px;border-bottom:1px solid var(--rule);background:
+  linear-gradient(var(--rule-2) 1px,transparent 1px) 0 0/20px 20px,
+  linear-gradient(90deg,var(--rule-2) 1px,transparent 1px) 0 0/20px 20px,#fbfcfc;display:flex;align-items:center;justify-content:center}
+.way-body{padding:32px 32px 36px;flex:1;display:flex;flex-direction:column}
+.way-body .label{display:flex;justify-content:space-between;align-items:center;min-height:27px}
+.way-body .h3{font:600 28px/1.15 var(--f-serif);margin:14px 0 20px}
+.way ul{list-style:none;font-size:15.5px;color:var(--ink-2)}
+.way li{padding:10px 0 10px 24px;border-top:1px solid var(--rule-2);position:relative}
+.way li::before{content:"";position:absolute;left:0;top:19px;width:10px;height:1.5px;background:var(--petrol)}
+.hybrid-note{display:grid;grid-template-columns:3fr 9fr;gap:var(--gutter);margin-top:40px}
+.hybrid-note p{font-size:17px;color:var(--ink-2);max-width:820px}
+.hybrid-note strong{color:var(--ink)}
+
+/* ---------- WÄCHTER ---------- */
+.dark{background:var(--ink);color:#fff;border-top:0}
+.dark .sec-no{color:var(--ink-mute)}
+.dark .sec-no b{color:var(--signal)}
+.dark .lead,.dark p{color:#C9D4D7}
+.w-intro{display:grid;grid-template-columns:3fr 4.5fr 4.5fr;gap:var(--gutter);margin-bottom:64px}
+.w-intro p{font-size:16.5px}
+.flow{display:grid;grid-template-columns:1fr 40px 1fr 72px 1fr 40px 1fr;align-items:stretch}
+.zone-lbl{display:grid;grid-template-columns:1fr 40px 1fr 72px 1fr 40px 1fr;margin-bottom:16px}
+.zone-lbl div{font:500 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute)}
+.zone-lbl .z-in{grid-column:1/4;border-top:1px solid #3a4950;padding-top:12px}
+.zone-lbl .z-out{grid-column:5/6;border-top:1px dashed #6b7b82;padding-top:12px}
+.zone-lbl .z-back{grid-column:7/8;border-top:1px solid #3a4950;padding-top:12px}
+.doc{background:#fff;color:var(--ink);display:flex;flex-direction:column}
+.doc-h{display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--rule);font:500 11.5px/1.2 var(--f-mono);letter-spacing:.04em;color:var(--steel);text-transform:uppercase}
+.doc-b{padding:18px 16px 20px;font-size:14.5px;line-height:1.75;flex:1}
+.doc-f{padding:12px 16px;border-top:1px solid var(--rule);font-size:13px;color:var(--steel)}
+.doc.shadow{background:#E9EEEE}
+.doc.cloud{background:#1A2A30;color:#fff;border:1px dashed #6b7b82}
+.doc.cloud .doc-h{border-color:#33444b;color:var(--ink-mute)}
+.doc.cloud .doc-f{border-color:#33444b;color:var(--ink-mute)}
+.doc.back{outline:2px solid var(--signal);outline-offset:-2px}
+.arrow{display:flex;align-items:center;justify-content:center}
+.arrow svg{width:28px;height:16px;stroke:var(--signal);stroke-width:1.5;fill:none}
+.boundary{position:relative;display:flex;align-items:center;justify-content:center}
+.boundary::before{content:"";position:absolute;top:-28px;bottom:-28px;left:50%;border-left:2px dashed var(--signal)}
+.boundary span{position:relative;background:var(--ink);font:500 11px/1.2 var(--f-mono);letter-spacing:.08em;color:var(--signal);writing-mode:vertical-rl;transform:rotate(180deg);padding:10px 0;text-transform:uppercase}
+.w-steps{display:grid;grid-template-columns:1fr 40px 1fr 72px 1fr 40px 1fr;margin-top:28px}
+.w-steps div{font-size:15px;color:#C9D4D7}
+.w-steps b{display:block;color:#fff;font-weight:600;margin-bottom:4px}
+.w-steps .n{font:500 12px/1 var(--f-mono);color:var(--signal);margin-bottom:10px;display:block}
+.keytab{margin-top:14px;border:1px solid #3a4950;font:400 12.5px/1.5 var(--f-mono);color:#C9D4D7}
+.keytab div{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #2a3a40}
+.keytab div:first-child{border-top:0;color:var(--steel);text-transform:uppercase;font-size:11px;letter-spacing:.06em}
+.keytab span{padding:6px 10px}
+.keytab span+span{border-left:1px solid #2a3a40}
+.w-foot{margin-top:64px;padding-top:28px;border-top:1px solid #2a3a40;display:flex;justify-content:space-between;align-items:center}
+.w-foot p{font-size:16px;color:#fff}
+
+/* ---------- KOSTEN ---------- */
+.cost{display:grid;grid-template-columns:3fr 4fr 5fr;gap:var(--gutter);align-items:start}
+.cost-intro .h2{margin-bottom:24px}
+.sheet{background:var(--white);border:1px solid var(--rule)}
+.sheet-h{display:flex;justify-content:space-between;padding:16px 28px;border-bottom:1px solid var(--ink)}
+.pos{display:grid;grid-template-columns:48px 1fr;padding:24px 28px;border-bottom:1px solid var(--rule)}
+.pos .mono{font-size:13px;color:var(--steel);padding-top:3px}
+.pos h4{font:600 17px/1.3 var(--f-sans);margin-bottom:6px}
+.pos p{font-size:15px;color:var(--ink-2)}
+.zero{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule)}
+.zero div{padding:22px 28px}
+.zero div+div{border-left:1px solid var(--rule)}
+.zero .v{font:600 36px/1 var(--f-serif);color:var(--petrol);margin-top:8px}
+.sheet-f{padding:20px 28px;display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:15px;color:var(--ink-2)}
+
+/* ---------- VERGLEICH ---------- */
+table.cmp{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--rule)}
+.cmp th,.cmp td{text-align:left;padding:20px 24px;border-bottom:1px solid var(--rule);vertical-align:top;font-size:16px}
+.cmp thead th{font:500 12.5px/1.3 var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--steel);background:var(--paper)}
+.cmp thead th:last-child{background:var(--petrol);color:#fff}
+.cmp tbody th{font-weight:600;width:26%}
+.cmp td{color:var(--ink-2);width:37%}
+.cmp td:last-child{background:#F4F8F7;color:var(--ink);border-left:2px solid var(--petrol)}
+
+/* ---------- FAQ ---------- */
+.faq{display:grid;grid-template-columns:3fr 4fr 5fr;gap:var(--gutter)}
+.faq-list{grid-column:2/4;border-top:1px solid var(--ink)}
+.q{border-bottom:1px solid var(--rule)}
+.q-h{display:grid;grid-template-columns:64px 1fr 28px;align-items:center;padding:24px 0;font:600 18.5px/1.4 var(--f-sans);cursor:pointer}
+.q-h .mono{font-size:13px;font-weight:500;color:var(--steel)}
+.q-h svg{width:20px;height:20px;stroke:var(--ink);stroke-width:1.5;fill:none}
+.q-a{padding:0 64px 28px 64px;color:var(--ink-2);font-size:16.5px;max-width:820px}
+.contact-card{background:var(--white);border:1px solid var(--rule);padding:28px;margin-top:32px}
+.contact-card p{font-size:15px;color:var(--ink-2);margin:8px 0 20px}
+.contact-card .row{display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid var(--rule-2);font-size:15px}
+.contact-card .row span:first-child{color:var(--steel)}
+
+/* ---------- CTA + FOOTER ---------- */
+.cta{background:var(--petrol);color:#fff;padding:96px 0}
+.cta .container{display:grid;grid-template-columns:8fr 4fr;gap:var(--gutter);align-items:end}
+.cta p{color:#D5E5E2;font-size:19px;margin-top:20px}
+.cta .btns{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.cta .btns .btn{justify-content:center}
+.foot{background:var(--ink);color:var(--ink-mute);padding:72px 0 32px;font-size:15px}
+.foot-grid{display:grid;grid-template-columns:4fr 2fr 2fr 2fr 2fr;gap:var(--gutter);padding-bottom:56px;border-bottom:1px solid #2a3a40}
+.foot .logo{color:#fff;margin-bottom:20px}
+.foot h5{font:500 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:20px}
+.foot ul{list-style:none}
+.foot li{margin-bottom:10px}
+.foot address{font-style:normal;line-height:1.7}
+.foot-bot{display:flex;justify-content:space-between;padding-top:24px;font:400 13px/1 var(--f-mono)}
+
+/* ---------- MOBIL ---------- */
+@media (max-width:760px){
+  :root{--gutter:20px}
+  body{font-size:16px}
+  .util{display:none}
+  .nav .container{height:64px;justify-content:space-between}
+  .nav-links,.nav-cta .btn-secondary{display:none}
+  .nav-cta .btn{height:40px;padding:0 14px;font-size:14.5px}
+  .burger{display:flex;width:40px;height:40px;border:1.5px solid var(--ink);align-items:center;justify-content:center}
+  .burger svg{width:18px;height:18px;stroke:var(--ink);stroke-width:1.6}
+  .logo{font-size:16px;letter-spacing:.14em}
+  .logo-mark{width:26px;height:26px}
+  .hero{padding-top:36px}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .h-display{font-size:44px}
+  .h2{font-size:30px}
+  .lead{font-size:17.5px}
+  .hero .kicker{font-size:11.5px;margin-bottom:20px}
+  .hero .kicker i{width:20px}
+  .checks{margin:28px 0 32px}
+  .hero-ctas .btn{width:100%;justify-content:space-between}
+  .hero-ctas .btn-ghost{margin:8px 0 0;width:auto}
+  .plate{grid-template-columns:1fr 1fr}
+  .plate div:nth-child(2){border-right:0}
+  .plate div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .branches{flex-wrap:wrap;margin-top:48px}
+  .branches .label{width:100%;padding:16px 0}
+  .branches a{flex:0 0 50%;text-align:left;padding:14px 0;border-left:0;border-top:1px solid var(--rule)}
+  .facts{grid-template-columns:1fr 1fr}
+  .facts>div,.facts>div+div{padding:24px 16px 24px 0;border-left:0}
+  .facts>div:nth-child(even){padding-left:16px;border-left:1px solid var(--rule)}
+  .facts>div:nth-child(n+3){border-top:1px solid var(--rule)}
+  .facts .num{font-size:34px}
+  .sec{padding:64px 0}
+  .sec-head,.sol{grid-template-columns:1fr;gap:16px;margin-bottom:32px}
+  .sol-list{grid-template-columns:1fr}
+  .sol-item{grid-template-columns:44px 1fr 20px;padding:24px 0}
+  .sol-aside .note{display:none}
+  .steps{grid-template-columns:1fr;border-top:0;border-left:1px solid var(--ink);margin-left:6px}
+  .step{padding:0 0 28px 28px}
+  .step::before{top:2px;left:-6px}
+  .step-foot{flex-direction:column;align-items:flex-start;gap:12px;margin-top:16px}
+  .ways{grid-template-columns:1fr}
+  .way{border-right:0;border-bottom:1px solid var(--rule)}
+  .way-fig{height:170px}
+  .way-body{padding:24px 20px 28px}
+  .hybrid-note,.w-intro,.cost,.faq,.cta .container{grid-template-columns:1fr;gap:16px}
+  .w-intro>div:first-child{display:none}
+  .w-intro{margin-bottom:40px}
+  .zone-lbl,.w-steps{display:none}
+  .flow{grid-template-columns:1fr;gap:0}
+  .arrow{height:44px}.arrow svg{transform:rotate(90deg)}
+  .boundary{height:64px}
+  .boundary::before{top:50%;bottom:auto;left:-20px;right:-20px;border-left:0;border-top:2px dashed var(--signal)}
+  .boundary span{writing-mode:horizontal-tb;transform:none;padding:0 10px}
+  .w-foot{flex-direction:column;align-items:flex-start;gap:12px;margin-top:40px}
+  .zero .v{font-size:28px}
+  .pos,.sheet-h,.zero div,.sheet-f{padding-left:20px;padding-right:20px}
+  .sheet-f{flex-direction:column;align-items:flex-start}
+  table.cmp thead{display:none}
+  .cmp tr{display:block;border-bottom:1px solid var(--rule)}
+  .cmp th,.cmp td{display:block;width:auto!important;border:0;padding:6px 16px}
+  .cmp tbody th{padding-top:18px}
+  .cmp td:first-of-type::before{content:"Cloud-KI: ";font-weight:600}
+  .cmp td:last-child{border-left:3px solid var(--petrol);margin:6px 16px 18px;padding:10px 12px}
+  .faq>div{grid-column:auto!important}
+  .q-h{grid-template-columns:44px 1fr 24px;font-size:16.5px}
+  .q-a{padding:0 0 24px 44px}
+  .cta{padding:64px 0}
+  .h1{font-size:36px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-grid>div:first-child{grid-column:1/3}
+  .foot-bot{flex-direction:column;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="util"><div class="container">
+  <span>Entwickelt und betreut in Deutschland · Lastrup</span>
+  <span>+49 5223 4921030 · <a href="#">info@eigenkern.de</a></span>
+</div></div>
+<header class="nav"><div class="container">
+  <a class="logo" href="#">
+    <svg class="logo-mark" viewBox="0 0 30 30"><rect x="1" y="1" width="28" height="28" fill="none" stroke="#0E1B20" stroke-width="2"/><rect x="11" y="11" width="10" height="10" fill="#0B4F4A"/></svg>
+    EIGENKERN
+  </a>
+  <nav class="nav-links">
+    <span>Lokale KI</span>
+    <span>Lösungen <svg viewBox="0 0 12 12"><path d="M2 4.5l4 4 4-4"/></svg></span>
+    <span>Lernen <svg viewBox="0 0 12 12"><path d="M2 4.5l4 4 4-4"/></svg></span>
+    <span>Unternehmen <svg viewBox="0 0 12 12"><path d="M2 4.5l4 4 4-4"/></svg></span>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-secondary btn-sm" href="#">Gespräch</a>
+    <a class="btn btn-primary btn-sm" href="#">Testen</a>
+    <span class="burger"><svg viewBox="0 0 18 18" fill="none"><path d="M1 4h16M1 9h16M1 14h16"/></svg></span>
+  </div>
+</div></header>
+
+<!-- ===== HERO ===== -->
+<section class="hero"><div class="container">
+  <div class="hero-grid">
+    <div>
+      <div class="label kicker"><i></i>KI und Automatisierung für jede Branche</div>
+      <h1 class="h-display">Ihre eigene KI.<br>Im eigenen Haus.</h1>
+      <p class="lead"><strong>Wir helfen jedem Betrieb, jeder Kanzlei, Praxis und Schule rund um KI, Automatisierung und Digitalisierung</strong>, von der Idee bis zum laufenden System. Unser Kern: die lokale KI, die Ihre Unterlagen liest, statt Ihre Daten zu verschicken.</p>
+      <ul class="checks">
+        <li><span>01</span><div><strong>Ihre Daten bleiben unter Ihrer Kontrolle:</strong> auf dem Gerät im Haus oder auf einem Server nur für Sie in Deutschland.</div></li>
+        <li><span>02</span><div><strong>Keine Kosten pro Frage und pro Kopf:</strong> das ganze Team arbeitet damit.</div></li>
+        <li><span>03</span><div><strong>Antworten aus Ihren Unterlagen,</strong> mit Fundstelle zum Nachprüfen.</div></li>
+      </ul>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#">Mit eigenen Daten testen <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 9h13M10 4l5 5-5 5"/></svg></a>
+        <a class="btn btn-secondary" href="#">So funktioniert es</a>
+        <a class="btn btn-ghost" href="#">Partner</a>
+      </div>
+    </div>
+
+    <!-- Grundriss statt Chat-Karte -->
+    <figure class="plan">
+      <div class="plan-top"><span class="label">Grundriss · Kanzlei Muster</span><span class="label">Blatt 1 / Lokal</span></div>
+      <svg viewBox="0 0 580 430" font-family="IBM Plex Mono, monospace">
+        <defs>
+          <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#C9D1D2" stroke-width="1.2"/></pattern>
+        </defs>
+        <!-- Datengrenze -->
+        <rect x="34" y="40" width="420" height="340" fill="none" stroke="#0B4F4A" stroke-width="1.2" stroke-dasharray="6 5"/>
+        <text x="40" y="32" font-size="10.5" letter-spacing="1.2" fill="#0B4F4A">DATENGRENZE · IHR HAUS</text>
+        <!-- Außenwände -->
+        <rect x="52" y="58" width="384" height="304" fill="#fff" stroke="#0E1B20" stroke-width="5"/>
+        <!-- Innenwände -->
+        <path d="M232 58V200M232 236V362M52 210H170M200 210H232M232 250H330M362 250H436" stroke="#0E1B20" stroke-width="2.5" fill="none"/>
+        <!-- Türbögen -->
+        <path d="M170 210a30 30 0 0 1 30 -30" fill="none" stroke="#56656C" stroke-width="1"/><line x1="200" y1="210" x2="200" y2="180" stroke="#56656C"/>
+        <path d="M232 200a36 36 0 0 1 36 36" fill="none" stroke="#56656C" stroke-width="1"/>
+        <path d="M330 250a32 32 0 0 1 32 -32" fill="none" stroke="#56656C" stroke-width="1"/>
+        <!-- Raumnamen -->
+        <text x="68" y="84" font-size="10.5" fill="#56656C" letter-spacing="1">EMPFANG</text>
+        <text x="68" y="236" font-size="10.5" fill="#56656C" letter-spacing="1">BESPRECHUNG</text>
+        <text x="248" y="84" font-size="10.5" fill="#56656C" letter-spacing="1">BÜRO 1–3</text>
+        <text x="248" y="276" font-size="10.5" fill="#56656C" letter-spacing="1">ARCHIV</text>
+        <!-- Schreibtische -->
+        <g fill="none" stroke="#0E1B20" stroke-width="1.2">
+          <rect x="262" y="104" width="60" height="34"/><rect x="346" y="104" width="60" height="34"/><rect x="262" y="168" width="60" height="34"/>
+          <rect x="84" y="270" width="110" height="52" rx="2"/>
+          <rect x="70" y="110" width="80" height="30"/>
+        </g>
+        <!-- Archiv: Regale -->
+        <rect x="250" y="292" width="170" height="14" fill="url(#hatch)" stroke="#0E1B20" stroke-width="1"/>
+        <rect x="250" y="326" width="170" height="14" fill="url(#hatch)" stroke="#0E1B20" stroke-width="1"/>
+        <!-- Gerät -->
+        <rect x="350" y="160" width="66" height="54" fill="#0B4F4A"/>
+        <rect x="374" y="180" width="18" height="14" fill="#D6F03C"/>
+        <path d="M416 204L462 268" stroke="#0B4F4A" stroke-width="1"/><circle cx="416" cy="204" r="2.5" fill="#0B4F4A"/><text x="466" y="276" font-size="10.5" fill="#0B4F4A" font-weight="500">EK-1</text><text x="466" y="290" font-size="10.5" fill="#0B4F4A" font-weight="500">LOKALE KI</text>
+        <!-- Datenwege intern -->
+        <g stroke="#0B4F4A" stroke-width="1.4" fill="none">
+          <path d="M292 138V152H350"/>
+          <path d="M376 138V160"/>
+          <path d="M292 202V214"/><path d="M322 185H350"/>
+          <path d="M383 214V299"/>
+          <path d="M150 125H200V187H350"/>
+        </g>
+        <g fill="#0B4F4A"><circle cx="292" cy="138" r="3"/><circle cx="376" cy="138" r="3"/><circle cx="322" cy="185" r="3"/><circle cx="383" cy="299" r="3"/><circle cx="150" cy="125" r="3"/></g>
+        <!-- Cloud draußen, blockiert -->
+        <rect x="486" y="70" width="80" height="44" fill="none" stroke="#56656C" stroke-dasharray="3 3"/>
+        <text x="497" y="96" font-size="10.5" fill="#56656C">CLOUD-KI</text>
+        <path d="M526 114V160H456" stroke="#9FB0B5" stroke-width="1.2" stroke-dasharray="3 4" fill="none"/>
+        <g stroke="#0E1B20" stroke-width="2"><path d="M466 152l12 12M478 152l-12 12"/></g>
+        <text x="472" y="190" font-size="10" fill="#0E1B20">KEIN</text>
+        <text x="472" y="203" font-size="10" fill="#0E1B20">DATENFLUSS</text>
+        <!-- Bemaßung -->
+        <g stroke="#56656C" stroke-width="1"><path d="M52 404H436"/><path d="M52 398v12M436 398v12"/></g>
+        <text x="214" y="420" font-size="10" fill="#56656C">12,40 m</text>
+      </svg>
+      <div class="plate">
+        <div><span class="label">Standort</span><b>Gerät im Büro</b></div>
+        <div><span class="label">Verarbeitung</span><b>auf dem Gerät</b></div>
+        <div><span class="label">Internet</span><b>nicht nötig</b></div>
+        <div><span class="label">Pro Frage</span><b>0,00 €</b></div>
+      </div>
+    </figure>
+  </div>
+
+  <div class="branches">
+    <span class="label">Für</span>
+    <a href="#">Steuerkanzleien</a><a href="#">Arztpraxen</a><a href="#">Handwerk</a><a href="#">Rechtsanwälte</a><a href="#">Industrie</a><a href="#">Energie</a><a href="#">Verwaltung</a><a href="#">Ihre Branche →</a>
+  </div>
+  <div class="facts">
+    <div><div class="num">0 <small>€</small></div><div class="small">Kosten pro Frage</div></div>
+    <div><div class="num">0 <small>€</small></div><div class="small">Aufpreis pro Mitarbeiter</div></div>
+    <div><div class="num">24 <small>h</small></div><div class="small">Austauschgerät bei Defekt, über Hardwarepartner Wortmann</div></div>
+    <div><div class="num">§</div><div class="small">Jede Antwort mit Fundstelle zum Nachprüfen</div></div>
+  </div>
+</div></section>
+
+<!-- ===== § 01 LÖSUNGEN ===== -->
+<section class="sec"><div class="container">
+  <div class="sec-head">
+    <div class="sec-no"><b>§ 01</b> Lösungen</div>
+    <div>
+      <h2 class="h2">Eine KI. Fertige Lösungen für Ihren Alltag.</h2>
+      <p class="lead">Keine Vorkenntnisse nötig: Sie bekommen ein fertig eingerichtetes Werkzeug, und wir schulen Ihr Team in Bedienung und Grenzen.</p>
+    </div>
+  </div>
+  <div class="sol">
+    <aside class="sol-aside">
+      <div class="note" style="margin-top:0;padding:0">
+        <div style="aspect-ratio:16/10;background:var(--ink);display:flex;align-items:center;justify-content:center;position:relative">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect x="1" y="1" width="54" height="54" stroke="#fff" stroke-width="1.5"/><path d="M22 18v20l17-10z" fill="#D6F03C"/></svg>
+          <span class="label" style="position:absolute;left:14px;bottom:12px;color:var(--ink-mute)">Teil 1 · 3:40</span>
+        </div>
+        <div style="padding:20px">
+          <span class="label">Kurz erklärt</span>
+          <div class="h3" style="margin:8px 0 0;font-size:19px">Sehen statt lesen.</div>
+          <p>Drei kurze Videos zeigen, wie die lokale KI bedient wird.</p>
+          <div style="margin-top:16px;border-top:1px solid var(--rule-2);font-size:14.5px">
+            <div style="padding:9px 0;border-bottom:1px solid var(--rule-2)"><span class="mono" style="color:var(--petrol)">01</span>&nbsp; User Chat</div>
+            <div style="padding:9px 0;border-bottom:1px solid var(--rule-2)"><span class="mono" style="color:var(--petrol)">02</span>&nbsp; Dokumente einlesen</div>
+            <div style="padding:9px 0"><span class="mono" style="color:var(--petrol)">03</span>&nbsp; Verwaltung und Benutzer</div>
+          </div>
+          <a class="btn btn-ghost" style="margin-top:16px" href="#">Alle Videos</a>
+        </div>
+      </div>
+    </aside>
+    <div class="sol-list">
+      <a class="sol-item" href="#">
+        <svg class="ic" viewBox="0 0 28 28"><path d="M6 3h11l5 5v17H6z"/><path d="M17 3v5h5"/><path d="M10 14h8M10 18h8M10 22h5"/></svg>
+        <div><span class="label">Für Steuerkanzleien</span><div class="h3">Steuerberater-KI</div><p>Mandantenfragen aus der Akte beantworten, Belegeingang und Fristen im Blick, Schreiben als Entwurf.</p><span class="more">Mehr für Kanzleien</span></div>
+        <svg class="arr" viewBox="0 0 20 20"><path d="M4 16L16 4M7 4h9v9"/></svg>
+      </a>
+      <a class="sol-item" href="#">
+        <svg class="ic" viewBox="0 0 28 28"><rect x="3" y="3" width="22" height="22"/><path d="M14 8v12M8 14h12"/></svg>
+        <div><span class="label">Für Ärzte und Praxen</span><div class="h3">KI für Arztpraxen</div><p>Praxis-Wissens-KI und Praxisplan für Dienste und Urlaub, mit Videos zum Ansehen.</p><span class="more">Mehr für Praxen</span></div>
+        <svg class="arr" viewBox="0 0 20 20"><path d="M4 16L16 4M7 4h9v9"/></svg>
+      </a>
+      <a class="sol-item" href="#">
+        <svg class="ic" viewBox="0 0 28 28"><path d="M3 25h22"/><path d="M5 25V12l9-7 9 7v13"/><path d="M11 25v-7h6v7"/></svg>
+        <div><span class="label">Für Handwerksbetriebe</span><div class="h3">Handwerker-KI</div><p>Aufträge, Fotos, Angebote und Rechnungen an einem Ort, Unterlagen befragen wie einen Kollegen.</p><span class="more">Mehr fürs Handwerk</span></div>
+        <svg class="arr" viewBox="0 0 20 20"><path d="M4 16L16 4M7 4h9v9"/></svg>
+      </a>
+      <a class="sol-item" href="#">
+        <svg class="ic" viewBox="0 0 28 28"><path d="M14 25V12"/><path d="M14 12L14 3M14 12l8 5M14 12l-8 5"/><path d="M9 25h10"/></svg>
+        <div><span class="label">Für Energie und Landwirtschaft</span><div class="h3">Werkzeuge für Energieerzeuger</div><p>Fahrplan-Optimierung, Flexrechner, Substratrechner, digitaler Zwilling und Wächter.</p><span class="more">Mehr zu Energie</span></div>
+        <svg class="arr" viewBox="0 0 20 20"><path d="M4 16L16 4M7 4h9v9"/></svg>
+      </a>
+      <a class="sol-item" href="#">
+        <svg class="ic" viewBox="0 0 28 28"><rect x="3" y="3" width="9" height="9"/><rect x="16" y="3" width="9" height="9"/><rect x="3" y="16" width="9" height="9"/><path d="M20.5 16v9M16 20.5h9"/></svg>
+        <div><span class="label">Für jede Branche</span><div class="h3">Ihre Branche</div><p>Rechtsanwälte, Verwaltung, Industrie, Hausverwaltung: Überall, wo Wissen in Ordnern steckt.</p><span class="more">Alle Branchen</span></div>
+        <svg class="arr" viewBox="0 0 20 20"><path d="M4 16L16 4M7 4h9v9"/></svg>
+      </a>
+      <a class="sol-item" href="#">
+        <svg class="ic" viewBox="0 0 28 28"><rect x="3" y="5" width="22" height="16"/><path d="M12 10v6l5-3z"/><path d="M8 25h12"/></svg>
+        <div><span class="label">Zum Lernen</span><div class="h3">Lernsystem</div><p>Kurse und Lernvideos zur lokalen KI und zu Eigenkern, Schritt für Schritt.</p><span class="more">Zum Lernsystem</span></div>
+        <svg class="arr" viewBox="0 0 20 20"><path d="M4 16L16 4M7 4h9v9"/></svg>
+      </a>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== § 02 RUNDUM BEGLEITET ===== -->
+<section class="sec"><div class="container">
+  <div class="sec-head">
+    <div class="sec-no"><b>§ 02</b> Rundum begleitet</div>
+    <div>
+      <h2 class="h2">Wir begleiten Sie vom ersten Ordner bis zum laufenden System.</h2>
+      <p class="lead">Sie bekommen kein Gerät, mit dem Sie allein gelassen werden, sondern ein fertig vorbereitetes System und eine Begleitung, die jeden Schritt erklärt.</p>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="no">01</div><h4>Unterlagen ansehen.</h4><p>Wir prüfen vorab Ihre Ordner und Dokumente: lesbar, wie groß, wie geordnet? Daraus legen wir gemeinsam die Zielstruktur fest.</p></div>
+    <div class="step"><div class="no">02</div><h4>Größtes Ärgernis zuerst.</h4><p>Was im Alltag am meisten Zeit oder Nerven kostet, gehen wir zuerst an. Die Reihenfolge bestimmen Sie.</p></div>
+    <div class="step"><div class="no">03</div><h4>Fertig ausliefern.</h4><p>Gerät und Software kommen vorinstalliert. Ihre gewohnte Ordnerstruktur bleibt.</p></div>
+    <div class="step"><div class="no">04</div><h4>Einführen und schulen.</h4><p>Kurze Einführungsvideos erklären, was die KI kann und wo ihre Grenzen liegen.</p></div>
+    <div class="step"><div class="no">05</div><h4>Betreuen.</h4><p>Wir halten das System aktuell. Bei Defekt: Austauschgerät innerhalb von 24 Stunden über Wortmann.</p></div>
+  </div>
+  <div class="step-foot"><span>Erreichbar von jedem Endgerät: Rechner, Tablet oder Handy, über einen gesicherten Zugang.</span><a class="btn btn-ghost" href="#">Gespräch vereinbaren</a></div>
+</div></section>
+
+<!-- ===== § 03 DREI WEGE ===== -->
+<section class="sec"><div class="container">
+  <div class="sec-head">
+    <div class="sec-no"><b>§ 03</b> Drei Wege</div>
+    <div>
+      <h2 class="h2">Lokal, eigener Server oder Hybrid: Sie entscheiden.</h2>
+      <p class="lead">Alle drei Wege erklären wir im Einführungsvideo mit ihren Vor- und Nachteilen, bevor Sie sich festlegen.</p>
+    </div>
+  </div>
+  <div class="ways">
+    <div class="way">
+      <div class="way-fig">
+        <svg width="240" height="150" viewBox="0 0 240 150" fill="none" font-family="IBM Plex Mono">
+          <rect x="40" y="20" width="160" height="110" stroke="#0B4F4A" stroke-dasharray="5 4"/>
+          <path d="M60 120V62l60-30 60 30v58z" stroke="#0E1B20" stroke-width="2.5" fill="#fff"/>
+          <rect x="104" y="80" width="32" height="26" fill="#0B4F4A"/><rect x="115" y="88" width="10" height="8" fill="#D6F03C"/>
+          <text x="44" y="14" font-size="9" fill="#0B4F4A" letter-spacing="1">IHR HAUS</text>
+        </svg>
+      </div>
+      <div class="way-body">
+        <div class="label"><span>Weg A</span><span>Standard</span></div>
+        <div class="h3">Lokal</div>
+        <ul>
+          <li>Alles läuft auf dem Gerät in Ihrem Haus.</li>
+          <li>Ihre Unterlagen werden vor Ort gelesen und eingeordnet.</li>
+          <li>Bei sehr großen Beständen übernimmt auf Wunsch ein Rechenzentrum in Deutschland das erste Einlesen, mit Vertrag zur Auftragsverarbeitung.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="way">
+      <div class="way-fig">
+        <svg width="240" height="150" viewBox="0 0 240 150" fill="none" font-family="IBM Plex Mono">
+          <path d="M22 120V84l30-16 30 16v36z" stroke="#0E1B20" stroke-width="2" fill="#fff"/>
+          <rect x="40" y="96" width="24" height="16" stroke="#0E1B20" stroke-width="1.3" fill="#fff"/>
+          <path d="M84 104H150" stroke="#0B4F4A" stroke-width="1.5"/>
+          <rect x="108" y="94" width="16" height="14" fill="#fff" stroke="#0B4F4A" stroke-width="1.5"/><path d="M111 94v-4a5 5 0 0 1 10 0v4" stroke="#0B4F4A" stroke-width="1.5"/>
+          <rect x="152" y="30" width="70" height="96" stroke="#0E1B20" stroke-width="2" fill="#fff"/>
+          <g stroke="#0E1B20" stroke-width="1.2"><path d="M160 48h54M160 64h54M160 96h54M160 112h54"/></g>
+          <rect x="160" y="72" width="54" height="16" fill="#0B4F4A"/><rect x="200" y="77" width="8" height="6" fill="#D6F03C"/>
+          <text x="152" y="22" font-size="9" fill="#0B4F4A" letter-spacing="1">RZ DEUTSCHLAND</text>
+        </svg>
+      </div>
+      <div class="way-body">
+        <div class="label"><span>Weg B</span><span>Ohne Gerät</span></div>
+        <div class="h3">Eigener Server</div>
+        <ul>
+          <li>Ihre KI läuft auf einem Server nur für Sie, in einem Rechenzentrum in Deutschland.</li>
+          <li>Kein Gerät vor Ort nötig.</li>
+          <li>Mit Vertrag zur Auftragsverarbeitung.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="way">
+      <div class="way-fig">
+        <svg width="250" height="150" viewBox="0 0 250 150" fill="none" font-family="IBM Plex Mono">
+          <rect x="10" y="30" width="130" height="104" stroke="#0B4F4A" stroke-dasharray="5 4"/>
+          <path d="M22 124V72l42-22 42 22v52z" stroke="#0E1B20" stroke-width="2.5" fill="#fff"/>
+          <rect x="48" y="88" width="32" height="26" fill="#0B4F4A"/><rect x="59" y="96" width="10" height="8" fill="#D6F03C"/>
+          <path d="M120 70l12 4v10c0 8-6 13-12 15-6-2-12-7-12-15V74z" fill="#D6F03C" stroke="#0E1B20" stroke-width="1.4"/>
+          <path d="M140 84H190" stroke="#0E1B20" stroke-width="1.3" stroke-dasharray="3 3"/>
+          <rect x="190" y="64" width="50" height="40" stroke="#56656C" stroke-dasharray="3 3"/>
+          <text x="196" y="88" font-size="9" fill="#56656C">CLOUD</text>
+          <rect x="150" y="76" width="30" height="7" fill="#D6F03C"/>
+          <text x="148" y="100" font-size="8" fill="#0E1B20">SCHATTEN</text>
+          <text x="14" y="24" font-size="9" fill="#0B4F4A" letter-spacing="1">IHR HAUS + WÄCHTER</text>
+        </svg>
+      </div>
+      <div class="way-body">
+        <div class="label"><span>Weg C</span><span class="tag">Zusätzlich buchbar</span></div>
+        <div class="h3">Hybrid</div>
+        <ul>
+          <li>Das Gerät in Ihrem Haus bleibt der Kern.</li>
+          <li>Ein Wächter legt eine Schattenkopie an: Namen und vertrauliche Angaben werden durch Platzhalter ersetzt.</li>
+          <li>Damit nutzen Sie zusätzlich große Cloud-KIs wie ChatGPT oder Claude. Die Antworten werden bei Ihnen wieder mit den echten Angaben zusammengeführt.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="hybrid-note">
+    <div class="label" style="padding-top:4px">Was heißt Hybrid?</div>
+    <p><strong>Ihre lokale KI bleibt der Kern.</strong> Zusätzlich legt ein Wächter eine Schattenkopie Ihrer Unterlagen an, in der Namen und vertrauliche Angaben durch Platzhalter ersetzt sind. Dafür werden Inhalte der Schattenkopie an den gewählten Cloud-Dienst übermittelt; <strong>ohne Hybrid geschieht das nicht.</strong> Ihre Originalunterlagen bleiben bei Ihnen.</p>
+  </div>
+</div></section>
+
+<!-- ===== § 04 WÄCHTER ===== -->
+<section class="sec dark" id="waechter"><div class="container">
+  <div class="sec-head" style="margin-bottom:40px">
+    <div class="sec-no"><b>§ 04</b> Der Wächter</div>
+    <div><h2 class="h2">Ein Schatten hinaus ist besser als gar nichts.</h2></div>
+  </div>
+  <div class="w-intro">
+    <div></div>
+    <p>Die großen Cloud-KIs werden in rasantem Tempo besser: komfortabel, schnell und stark bei komplexen Aufgaben. Ihre privaten und geschäftlichen Daten möchten Sie ihnen trotzdem nicht überlassen.</p>
+    <p>Deshalb schickt der Wächter nur einen Schatten hinaus: eine Schattenkopie, in der Namen und vertrauliche Angaben durch Platzhalter ersetzt sind. Erst bei Ihnen werden die Platzhalter wieder durch die echten Angaben ersetzt.</p>
+  </div>
+
+  <div class="zone-lbl">
+    <div class="z-in">Bei Ihnen · Gerät im Haus</div>
+    <div class="z-out">Draußen · Cloud-KI</div>
+    <div class="z-back">Bei Ihnen</div>
+  </div>
+  <div class="flow">
+    <div class="doc">
+      <div class="doc-h"><span>Original</span><span>DOK-0417</span></div>
+      <div class="doc-b">Mandantin <span class="real">Andrea Becker</span>, <span class="real">Hauptstraße 4, Cloppenburg</span>, Steuer-ID <span class="real">12 345 678 901</span>. Bescheid 2025: Nachzahlung <span class="real">1.284 €</span>. Bitte Einspruch prüfen.</div>
+      <div class="doc-f">Liegt nur auf dem Gerät.</div>
+    </div>
+    <div class="arrow"><svg viewBox="0 0 28 16"><path d="M1 8h24M19 2l6 6-6 6"/></svg></div>
+    <div class="doc shadow">
+      <div class="doc-h"><span>Schattenkopie</span><span>Wächter</span></div>
+      <div class="doc-b">Mandantin <span class="tok">PERSON_01</span>, <span class="tok">ADRESSE_01</span>, Steuer-ID <span class="tok">ID_01</span>. Bescheid 2025: Nachzahlung <span class="tok">BETRAG_01</span>. Bitte Einspruch prüfen.</div>
+      <div class="doc-f" style="padding:10px 12px">
+        <div class="keytab" style="margin:0;border-color:var(--rule);color:var(--ink-2)">
+          <div style="border-color:var(--rule)"><span>Platzhalter</span><span style="border-color:var(--rule)">Zuordnung · bleibt lokal</span></div>
+          <div style="border-color:var(--rule)"><span>PERSON_01</span><span style="border-color:var(--rule)">A. Becker</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="boundary"><span>Ihre Datengrenze</span></div>
+    <div class="doc cloud">
+      <div class="doc-h"><span>Cloud-KI</span><span>z. B. ChatGPT, Claude</span></div>
+      <div class="doc-b">Für <span class="tok">PERSON_01</span> ist ein Einspruch innerhalb eines Monats nach Bekanntgabe möglich. Entwurf an <span class="tok">ADRESSE_01</span> liegt bei, Bezug: Nachzahlung <span class="tok">BETRAG_01</span>.</div>
+      <div class="doc-f">Sieht nur Platzhalter.</div>
+    </div>
+    <div class="arrow"><svg viewBox="0 0 28 16"><path d="M1 8h24M19 2l6 6-6 6"/></svg></div>
+    <div class="doc back">
+      <div class="doc-h"><span>Antwort</span><span>zusammengeführt</span></div>
+      <div class="doc-b">Für <span class="real">Andrea Becker</span> ist ein Einspruch innerhalb eines Monats nach Bekanntgabe möglich. Entwurf an <span class="real">Hauptstraße 4, Cloppenburg</span> liegt bei, Bezug: Nachzahlung <span class="real">1.284 €</span>.</div>
+      <div class="doc-f">Echte Angaben, nur bei Ihnen.</div>
+    </div>
+  </div>
+  <div class="w-steps">
+    <div><span class="n">01</span><b>Original bleibt bei Ihnen.</b>Ihre Unterlagen liegen auf dem Gerät in Ihrem Haus.</div><div></div>
+    <div><span class="n">02</span><b>Wächter legt den Schatten an.</b>Namen und vertrauliche Angaben werden durch Platzhalter ersetzt.</div><div></div>
+    <div><span class="n">03</span><b>Cloud-KI arbeitet am Schatten.</b>Nur Inhalte der Schattenkopie gehen an den gewählten Dienst.</div><div></div>
+    <div><span class="n">04</span><b>Antwort kommt zurück.</b>Bei Ihnen wird sie wieder mit den echten Angaben zusammengeführt.</div>
+  </div>
+  <div class="w-foot">
+    <p>Wächter und Schattenkopie buchen Sie zusätzlich. <span style="color:var(--signal)">Ohne Hybrid geht nichts an eine Cloud-KI.</span></p>
+    <span class="label" style="color:var(--ink-mute)">Beispiel mit erfundenen Daten</span>
+  </div>
+</div></section>
+
+<!-- ===== § 05 KOSTEN ===== -->
+<section class="sec"><div class="container">
+  <div class="cost">
+    <div class="sec-no" style="padding-top:12px"><b>§ 05</b> Klare Kosten</div>
+    <div class="cost-intro">
+      <h2 class="h2">Einmal kaufen, nach Bedarf erweitern.</h2>
+      <p class="lead">Sie erwerben Hardware und Software. Danach zahlen Sie nichts pro Frage und nichts pro Kopf.</p>
+    </div>
+    <div class="sheet">
+      <div class="sheet-h"><span class="label" style="color:var(--ink)">Kostenaufstellung</span><span class="label">Muster</span></div>
+      <div class="pos"><span class="mono">01</span><div><h4>Einmalig</h4><p>Sie erwerben Hardware und Software.</p></div></div>
+      <div class="zero">
+        <div><span class="label">Pro Frage</span><div class="v">0,00 €</div></div>
+        <div><span class="label">Pro Nutzer</span><div class="v">0,00 €</div></div>
+      </div>
+      <div class="pos"><span class="mono">02</span><div><h4>Monatlich nach Wahl</h4><p>Zusatzpakete, wenn Sie sie brauchen: Rechnungsstellung, Mahnwesen, Kundenverwaltung (CRM) oder Branchenlösungen. Jedes Paket einzeln kündbar.</p></div></div>
+      <div class="pos"><span class="mono">03</span><div><h4>Zusätzlich buchbar</h4><p>Erstes Einlesen großer Bestände im Rechenzentrum in Deutschland sowie für das Hybridmodell Wächter und Schattenkopie.</p></div></div>
+      <div class="sheet-f"><span>Was das für Ihren Betrieb kostet, sagen wir Ihnen nach der Vorab-Analyse Ihrer Unterlagen.</span><a class="btn btn-primary btn-sm" href="#">Analyse anfragen</a></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== § 06 UNTERSCHIED ===== -->
+<section class="sec"><div class="container">
+  <div class="sec-head">
+    <div class="sec-no"><b>§ 06</b> Der Unterschied</div>
+    <div><h2 class="h2">Cloud-KI oder Ihre eigene KI?</h2></div>
+  </div>
+  <table class="cmp">
+    <thead><tr><th>Frage</th><th>Cloud-KI (ChatGPT &amp; Co.)</th><th>Ihre lokale KI mit EIGENKERN</th></tr></thead>
+    <tbody>
+      <tr><th>Wo liegen Ihre Daten?</th><td>Auf Servern des Anbieters, häufig im Ausland</td><td>Bei Ihnen im Haus oder auf einem Server nur für Sie in Deutschland</td></tr>
+      <tr><th>Lernt jemand mit Ihren Daten?</th><td>Je nach Vertrag und Einstellung möglich</td><td>Nein. Die KI lernt nur in Ihrem Betrieb, das Wissen bleibt auf Ihrem Gerät</td></tr>
+      <tr><th>Was kostet jede Frage, jeder Nutzer?</th><td>Abo pro Person und/oder Kosten pro Anfrage</td><td>Keine Kosten pro Frage, alle Mitarbeiter ohne Aufpreis</td></tr>
+      <tr><th>Geht es ohne Internet?</th><td>Nein</td><td>Ja, das Gerät vor Ort antwortet auch offline</td></tr>
+      <tr><th>Wo wird die Antwort berechnet?</th><td>Auf den Servern des Anbieters</td><td>Auf Ihrem Gerät, aus Ihren Unterlagen, mit Fundstellen</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<!-- ===== § 07 FAQ ===== -->
+<section class="sec"><div class="container">
+  <div class="faq">
+    <div>
+      <div class="sec-no" style="padding-top:12px"><b>§ 07</b> Häufige Fragen</div>
+      <div class="contact-card">
+        <div class="h3" style="font-size:19px">Lieber direkt sprechen?</div>
+        <p>Wir erklären Ihnen alles in einem kurzen Gespräch.</p>
+        <div class="row"><span>Telefon</span><span>05223 4921030</span></div>
+        <div class="row"><span>E-Mail</span><span>info@eigenkern.de</span></div>
+        <a class="btn btn-secondary btn-sm" style="margin-top:16px" href="#">Gespräch vereinbaren</a>
+      </div>
+    </div>
+    <div style="grid-column:2/4">
+      <h2 class="h2" style="margin-bottom:40px">Fragen und Antworten</h2>
+      <div class="faq-list" style="grid-column:auto">
+        <div class="q">
+          <div class="q-h"><span class="mono">7.1</span>Brauche ich IT-Kenntnisse, um die lokale KI zu nutzen?<svg viewBox="0 0 20 20"><path d="M4 10h12"/></svg></div>
+          <div class="q-a">Nein. Gerät und Software kommen fertig eingerichtet zu Ihnen. Kurze Einführungsvideos und ein Hilfe-Assistent im System erklären Bedienung und Grenzen.</div>
+        </div>
+        <div class="q"><div class="q-h"><span class="mono">7.2</span>Was passiert, wenn das Gerät ausfällt?<svg viewBox="0 0 20 20"><path d="M4 10h12M10 4v12"/></svg></div></div>
+        <div class="q"><div class="q-h"><span class="mono">7.3</span>Funktioniert die KI auch ohne Internet?<svg viewBox="0 0 20 20"><path d="M4 10h12M10 4v12"/></svg></div></div>
+        <div class="q"><div class="q-h"><span class="mono">7.4</span>Welche Unterlagen und Dateiformate kann die KI lesen?<svg viewBox="0 0 20 20"><path d="M4 10h12M10 4v12"/></svg></div></div>
+        <div class="q"><div class="q-h"><span class="mono">7.5</span>Was sieht eine Cloud-KI im Hybridmodell?<svg viewBox="0 0 20 20"><path d="M4 10h12M10 4v12"/></svg></div></div>
+        <div class="q"><div class="q-h"><span class="mono">7.6</span>Was kostet das für meinen Betrieb?<svg viewBox="0 0 20 20"><path d="M4 10h12M10 4v12"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== CTA ===== -->
+<section class="cta"><div class="container">
+  <div>
+    <h2 class="h1">Ihre eigene KI. Im eigenen Haus.</h2>
+    <p>Testen Sie mit Ihren eigenen Unterlagen, oder sprechen Sie zuerst mit uns.</p>
+  </div>
+  <div class="btns">
+    <a class="btn btn-on-dark" href="#">Mit eigenen Daten testen</a>
+    <a class="btn btn-secondary btn-outline-dark" href="#">Gespräch vereinbaren</a>
+  </div>
+</div></section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot"><div class="container">
+  <div class="foot-grid">
+    <div>
+      <div class="logo"><svg class="logo-mark" viewBox="0 0 30 30"><rect x="1" y="1" width="28" height="28" fill="none" stroke="#fff" stroke-width="2"/><rect x="11" y="11" width="10" height="10" fill="#D6F03C"/></svg>EIGENKERN</div>
+      <p style="max-width:300px;margin-bottom:24px">KI und Automatisierung für jede Branche, mit der lokalen KI als Kern.</p>
+      <address>Eigenkern GmbH &amp; Co KG i. Gr.<br>Molberger Str. 39<br>49688 Lastrup<br>+49 5223 4921030</address>
+    </div>
+    <div><h5>Produkt</h5><ul><li>Lokale KI</li><li>Videos</li><li>Lernsystem</li><li>Hilfe</li><li>Testen</li></ul></div>
+    <div><h5>Lösungen</h5><ul><li>Steuerkanzleien</li><li>Ärzte und Praxen</li><li>Handwerk</li><li>Maschinenlernen</li><li>Flex-Assistent</li><li>Alle Branchen</li></ul></div>
+    <div><h5>Unternehmen</h5><ul><li>Partner</li><li>Über uns</li><li>Kontakt</li></ul></div>
+    <div><h5>Rechtliches</h5><ul><li>Impressum</li><li>Datenschutz</li></ul></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 Eigenkern</span><span>Entwickelt und betreut in Deutschland</span></div>
+</div></footer>
+</body>
+</html>
