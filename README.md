@@ -6,6 +6,7 @@ EIGENKERN verkauft keine Cloud-Magie, sondern eine KI, die nachweisbar im eigene
 ## Dateien
 | Datei | Inhalt |
 |---|---|
+| `previews/00-poster.png/.jpg` | Übersichtsposter 1920 × 1400 |
 | `previews/01-startseite-desktop-1440.png/.jpg` | Startseite Desktop, 1440 px, ganze Seite |
 | `previews/02-startseite-mobil-390-hero-bis-s02.png/.jpg` | Mobil (390 px, @2x): Hero + § 01 Lösungen + § 02 Begleitung |
 | `previews/02b-startseite-mobil-390-komplett.png/.jpg` | Mobil, ganze Seite (Bonus) |

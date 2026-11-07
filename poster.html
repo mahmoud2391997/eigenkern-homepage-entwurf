@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920">
+<title>EIGENKERN Poster</title>
+<link rel="stylesheet" href="ek.css">
+<style>
+body{width:1920px;height:1400px;overflow:hidden;position:relative;background:
+  linear-gradient(var(--rule-2) 1px,transparent 1px) 0 0/40px 40px,
+  linear-gradient(90deg,var(--rule-2) 1px,transparent 1px) 0 0/40px 40px,var(--paper)}
+.left{position:absolute;left:80px;top:80px;width:560px}
+.brand{display:flex;align-items:center;gap:14px;font:600 22px/1 var(--f-sans);letter-spacing:.16em;margin-bottom:56px}
+.left h1{font:600 72px/1.02 var(--f-serif);letter-spacing:-.02em;margin:18px 0 24px}
+.left .lead{font-size:19px}
+.pts{list-style:none;margin:32px 0;border-top:1px solid var(--ink)}
+.pts li{display:grid;grid-template-columns:52px 1fr;padding:14px 0;border-bottom:1px solid var(--rule);font-size:16.5px;color:var(--ink-2);background:var(--paper)}
+.pts li span{font:500 13px/1.8 var(--f-mono);color:var(--petrol)}
+.pts b{color:var(--ink);font-weight:600}
+.pal{display:flex;gap:0;border:1px solid var(--rule);background:#fff}
+.pal div{flex:1;height:72px;display:flex;align-items:flex-end;padding:8px;font:500 11px/1 var(--f-mono)}
+.fonts{display:flex;justify-content:space-between;margin-top:12px;font:400 12.5px/1 var(--f-mono);color:var(--steel)}
+.browser{position:absolute;left:700px;top:80px;width:1140px;background:#fff;border:1.5px solid var(--ink);box-shadow:16px 16px 0 var(--ink);height:930px;overflow:hidden}
+.bar{height:40px;border-bottom:1.5px solid var(--ink);display:flex;align-items:center;gap:8px;padding:0 14px}
+.bar i{width:11px;height:11px;border:1.5px solid var(--ink)}
+.bar span{margin-left:16px;font:400 13px/1 var(--f-mono);color:var(--steel)}
+.browser img{width:100%;display:block}
+.phone{position:absolute;left:1560px;top:620px;width:300px;background:var(--ink);padding:14px;border-radius:36px;box-shadow:16px 16px 0 rgba(14,27,32,.25)}
+.phone .scr{border-radius:24px;overflow:hidden;height:600px}
+.phone img{width:100%;display:block}
+.wf{position:absolute;left:80px;top:1060px;width:1460px;height:280px;background:var(--ink);display:grid;grid-template-columns:400px 1fr;overflow:hidden}
+.wf .txt{padding:32px 36px;color:#fff}
+.wf .txt .label{color:var(--signal)}
+.wf .txt h3{font:600 30px/1.15 var(--f-serif);margin:14px 0 12px}
+.wf .txt p{color:#C9D4D7;font-size:15px}
+.wf .img{background:var(--paper);overflow:hidden;position:relative}
+.wf .img img{position:absolute;left:0;top:0;width:1060px}
+.tagline{position:absolute;left:80px;top:1356px;right:80px;display:flex;justify-content:space-between;font:500 13px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--steel)}
+.tagline b{color:var(--petrol);font-weight:500}
+</style>
+</head>
+<body>
+<div class="left">
+  <div class="brand"><svg width="34" height="34" viewBox="0 0 30 30"><rect x="1" y="1" width="28" height="28" fill="none" stroke="#0E1B20" stroke-width="2"/><rect x="11" y="11" width="10" height="10" fill="#0B4F4A"/></svg>EIGENKERN</div>
+  <div class="label">Homepage-Entwurf · Wettbewerbsbeitrag</div>
+  <h1>Grundriss &amp; Typenschild</h1>
+  <p class="lead">Eine KI im eigenen Haus, erklärt wie eine technische Zeichnung. Seriös, deutsch, ingenieurmäßig und trotzdem modern.</p>
+  <ul class="pts">
+    <li><span>01</span><div><b>Grundriss statt Chat-Bubble.</b> Gerät im Büro, Datengrenze gestrichelt, Cloud bleibt draußen.</div></li>
+    <li><span>02</span><div><b>Paragraphen statt Pills.</b> Sektionen § 01–07 wie ein Gesetzestext.</div></li>
+    <li><span>03</span><div><b>Ein Signal.</b> Markergelb markiert nur, was der Wächter ersetzt.</div></li>
+  </ul>
+  <div class="pal">
+    <div style="background:#0E1B20;color:#fff">Tinte</div>
+    <div style="background:#0B4F4A;color:#fff">Petrol</div>
+    <div style="background:#D6F03C;color:#0E1B20">Signal</div>
+    <div style="background:#F3F5F4;color:#0E1B20">Papier</div>
+    <div style="background:#56656C;color:#fff">Stahl</div>
+  </div>
+  <div class="fonts"><span>Source Serif 4 · IBM Plex Sans · Plex Mono</span><span>OFL · WCAG AA</span></div>
+</div>
+
+<div class="browser">
+  <div class="bar"><i></i><i></i><i></i><span>eigenkern.de</span></div>
+  <img src="poster/desktop-hero.png" style="height:auto">
+</div>
+
+<div class="phone"><div class="scr"><img src="poster/mobile-hero.png"></div></div>
+
+<div class="wf">
+  <div class="txt">
+    <div class="label">§ 04 · Der Wächter</div>
+    <h3>Ein Schatten geht hinaus. Die Namen bleiben zu Hause.</h3>
+    <p>Original → Schattenkopie → Cloud-KI → Antwort mit echten Namen. Die Zuordnung verlässt das Gerät nie.</p>
+  </div>
+  <div class="img"><img src="poster/waechter.png"></div>
+</div>
+
+<div class="tagline"><span><b>Desktop 1440</b> · Mobil 390 · Style Tile · Wächter-Flow</span><span>Bootstrap 5 · Odoo-Snippets · selbst gehostete Schriften</span></div>
+</body>
+</html>
